@@ -18,7 +18,7 @@ echo "//example" > $SCREENS_INDEX_PATH
 echo "export { default as $SCREEN_NAME } from '@modules/$FOLDER_NAME/mobile/screens/$SCREEN_NAME';" >> $SCREENS_INDEX_PATH
 
 mkdir -p "src/modules/$FOLDER_NAME/mobile/screens/$SCREEN_NAME"
-echo "const $SCREEN_NAME = () => {" >> "src/modules/$FOLDER_NAME/mobile/screens/$SCREEN_NAME/index.tsx"
+echo "function $SCREEN_NAME () {" >> "src/modules/$FOLDER_NAME/mobile/screens/$SCREEN_NAME/index.tsx"
 echo "  return <></>;" >> "src/modules/$FOLDER_NAME/mobile/screens/$SCREEN_NAME/index.tsx"
 echo "};" >> "src/modules/$FOLDER_NAME/mobile/screens/$SCREEN_NAME/index.tsx"
 echo "" >> "src/modules/$FOLDER_NAME/mobile/screens/$SCREEN_NAME/index.tsx"
