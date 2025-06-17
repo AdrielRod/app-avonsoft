@@ -1,6 +1,22 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "target": "esnext",
+    "module": "esnext",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@*": ["src/*"],
+      "@src": ["src/*"],
+      "@dls": ["src/dls"],
+      "@core": ["src/core"],
+      "@modules": ["src/modules"],
+      "@routes": ["src/routes"],
+      "@infra": ["src/infra"],
+      "@shared": ["src/shared"]
+    }
   }
 }
