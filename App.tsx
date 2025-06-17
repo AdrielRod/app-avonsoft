@@ -1,21 +1,22 @@
 import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import Routes from '@routes';
-import { StatusBar } from 'expo-status-bar';
-import { View } from 'react-native';
-import {
-  SafeAreaProvider,
-  SafeAreaView,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { Toast } from '@dls/components';
 
 export default function App() {
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
-        <StatusBar style="light" />
-        <Routes />
-      </NavigationContainer>
+      <GestureHandlerRootView>
+        <NavigationContainer>
+          <StatusBar style="light" />
+          <Routes />
+
+          <Toast />
+        </NavigationContainer>
+      </GestureHandlerRootView>
     </SafeAreaProvider>
   );
 }

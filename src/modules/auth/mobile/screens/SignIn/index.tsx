@@ -1,7 +1,7 @@
 import { Image, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Input, LinearGradientText, Touchable } from '@dls/components';
+import { Input, LinearGradientText, Toast, Touchable } from '@dls/components';
 import { styles } from '@modules/auth/mobile/screens/SignIn/styles';
 import { Logo } from '@modules/auth/mobile/assets';
 import { useSignInForm } from '@modules/auth/business/forms';
@@ -16,6 +16,9 @@ function SignIn() {
   const insets = useSafeAreaInsets();
 
   function onGoToSignUp() {
+    Toast.show({ message: 'not implemented' });
+
+    return;
     navigation.navigate('auth/sign-up');
   }
 
