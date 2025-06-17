@@ -1,10 +1,11 @@
-import StyleSheet from '@dls/providers/useStyleSheet';
+import { theme } from '@dls/themes/colors';
+import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create(theme => ({
+export const styles = StyleSheet.create({
   container: {
     flexShrink: 1,
     gap: 6,
-    width: 40,
+    width: '100%',
   },
   title: {
     color: theme.COLORS.contrast,
@@ -26,10 +27,10 @@ export const styles = StyleSheet.create(theme => ({
     flex: 1,
     height: '100%',
     color: theme.COLORS.contrast,
-    fontSize: 16,
+    fontSize: 12,
   },
   textError: {
     color: 'red',
     fontSize: 12,
-  }
-}));
+  },
+});

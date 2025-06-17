@@ -1,2 +1,1 @@
-//example
-//export { default as NameComponent } from '@modules/auth/mobile/components/NameComponent';
+export { default as Button } from '@modules/auth/mobile/components/Button';

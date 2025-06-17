@@ -12,7 +12,11 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { Controller, type FieldValues } from 'react-hook-form';
 
-import { Map, If, Spinner, Touchable } from '@dls/components';
+import Map from '@dls/components/Map';
+import Spinner from '@dls/components/Spinner';
+import If from '@dls/components/If';
+import Touchable from '@dls/components/Touchable';
+
 import type { InputProps } from '@dls/components/Input/interfaces';
 import { styles } from '@dls/components/Input/styles';
 import { theme } from '@dls/themes/colors';
