@@ -1,18 +1,19 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 // import { showToast } from '@dls/components/Toast/methods';
-import { SignInSchema } from '@modules/auth/business/forms/SignInForm/interfaces';
-import { signInSchema } from '@modules/auth/business/forms/SignInForm/schema';
+import { SignInSchema } from '@modules/auth/business/forms/SignUpForm/interfaces';
+import { signUpSchema } from '@modules/auth/business/forms/SignUpForm/schema';
 
-export function useSignInForm() {
+export function useSignUpForm() {
   const {
     control,
     handleSubmit,
     trigger,
     formState: { errors },
   } = useForm<SignInSchema>({
-    resolver: zodResolver(signInSchema),
+    resolver: zodResolver(signUpSchema),
     mode: 'onChange',
   });
 

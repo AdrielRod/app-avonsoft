@@ -1,8 +1,9 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { SignIn } from '@modules/auth/mobile/screens';
+import { SignIn, SignUp } from '@modules/auth/mobile/screens';
+import { StackParamList } from '@routes/interfaces';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<StackParamList>();
 
 export default function AuthRoutes() {
   return (
@@ -11,6 +12,7 @@ export default function AuthRoutes() {
         headerShown: false,
       }}>
       <Stack.Screen name={'auth/sign-in'} component={SignIn} />
+      <Stack.Screen name={'auth/sign-up'} component={SignUp} />
     </Stack.Navigator>
   );
 }

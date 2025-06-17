@@ -4,51 +4,58 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Input, LinearGradientText, Touchable } from '@dls/components';
 import { styles } from '@modules/auth/mobile/screens/SignIn/styles';
 import { Logo } from '@modules/auth/mobile/assets';
-import { useSignInForm } from '@modules/auth/business/forms';
+import { useSignUpForm } from '@modules/auth/business/forms';
 import { Button } from '@modules/auth/mobile/components';
 import { useNavigation } from '@shared/hooks';
 
-function SignIn() {
-  const signInForm = useSignInForm();
-
-  const navigation = useNavigation();
+function SignUp() {
+  const signUpForm = useSignUpForm();
 
   const insets = useSafeAreaInsets();
 
-  function onGoToSignUp() {
-    navigation.navigate('auth/sign-up');
+  const navigation = useNavigation();
+
+  function onGoToSignIn() {
+    navigation.navigate('auth/sign-in');
   }
 
   return (
     <View style={styles.container}>
       <LinearGradientText style={[styles.title, { marginTop: insets.top }]}>
-        join in your account
+        create your account
       </LinearGradientText>
 
       <Image source={Logo} style={styles.avantsoft} />
 
       <View style={styles.inputField}>
         <Input
-          control={signInForm.control}
+          control={signUpForm.control}
           name="username"
           placeholder="email"
         />
 
         <Input
-          control={signInForm.control}
+          control={signUpForm.control}
           name="password"
           placeholder="password"
           kind="password"
         />
+
+        <Input
+          control={signUpForm.control}
+          name="confirmPassword"
+          placeholder="confirm password"
+          kind="password"
+        />
       </View>
 
-      <Button>sign in</Button>
+      <Button>sign up</Button>
 
-      <Touchable onPress={onGoToSignUp}>
-        <Text style={styles.textSignUp}>dont have an account? sign up</Text>
+      <Touchable onPress={onGoToSignIn}>
+        <Text style={styles.textSignUp}>Already has an account? Sign In</Text>
       </Touchable>
     </View>
   );
 }
 
-export default SignIn;
+export default SignUp;
