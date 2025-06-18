@@ -4,7 +4,9 @@ import { styles } from '@modules/hub/mobile/components/ClientItem/styles';
 
 function ClientItem(item: ClientItemProps) {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => item.onNavigateToClient(item)}>
       <View style={styles.avatar}>
         <Text style={styles.avatarText}>{item.missingLetter}</Text>
       </View>

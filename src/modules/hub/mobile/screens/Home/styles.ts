@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: theme.COLORS.contrast,
-    marginVertical: 24,
+    marginVertical: 16,
   },
   inputArea: {
     flexDirection: 'row',

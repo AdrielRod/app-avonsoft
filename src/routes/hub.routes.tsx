@@ -2,23 +2,24 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
-import { CreateClient, Home } from '@modules/hub/mobile/screens';
+import { Client, CreateClient, Home } from '@modules/hub/mobile/screens';
 import type { StackParamList } from '@routes/interfaces';
 import { theme } from '@dls/themes/colors';
 
 const Stack = createNativeStackNavigator<StackParamList>();
 const Bottom = createBottomTabNavigator<StackParamList>();
 
-// export default function HubHoutes() {
-//   return (
-//     <Stack.Navigator
-//       screenOptions={{
-//         headerShown: false,
-//       }}>
-//       <Stack.Screen name={'hub/home'} component={Home} />
-//     </Stack.Navigator>
-//   );
-// }
+function HomeStacks() {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}>
+      <Stack.Screen name={'hub/home'} component={Home} />
+      <Stack.Screen name={'hub/client'} component={Client} />
+    </Stack.Navigator>
+  );
+}
 
 export default function HubHoutes() {
   return (
@@ -34,8 +35,8 @@ export default function HubHoutes() {
         tabBarInactiveTintColor: theme.COLORS.tertiary,
       }}>
       <Bottom.Screen
-        name={'hub/home'}
-        component={Home}
+        name={'hub/tab'}
+        component={HomeStacks}
         options={{
           tabBarIcon: ({ color }) => (
             <Ionicons name="home" size={24} color={color} />
