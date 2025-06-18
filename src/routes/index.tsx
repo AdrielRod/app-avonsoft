@@ -1,8 +1,9 @@
+import { useAuth } from '@modules/auth/business/stores';
 import AuthRoutes from '@routes/auth.routes';
 import HubRoutes from '@routes/hub.routes';
 
 export default function Routes() {
-  const isAuthenticated = false;
+  const isThereUser = useAuth(({ user }) => !!user);
 
-  return isAuthenticated ? <HubRoutes /> : <AuthRoutes />;
+  return isThereUser ? <HubRoutes /> : <AuthRoutes />;
 }

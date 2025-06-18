@@ -1,7 +1,7 @@
 import { AxiosInstance } from 'axios';
 
 export interface FactoryClientHttpParams {
-  baseUrl: string;
+  baseURL: string;
 }
 
 export type ClientHttpInstance = AxiosInstance;

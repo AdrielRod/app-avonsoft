@@ -7,15 +7,19 @@ import { Logo } from '@modules/auth/mobile/assets';
 import { useSignInForm } from '@modules/auth/business/forms';
 import { Button } from '@modules/auth/mobile/components';
 import { useNavigation } from '@shared/hooks';
+import { useAuth } from '@modules/auth/business/stores';
 
 function SignIn() {
   const signInForm = useSignInForm();
+
+  const auth = useAuth();
 
   const navigation = useNavigation();
 
   const insets = useSafeAreaInsets();
 
   function onGoToSignUp() {
+    console.log(auth.user);
     navigation.navigate('auth/sign-up');
   }
 

@@ -4,13 +4,13 @@ import type {
   Fetch,
 } from '@infra/networking/avansoftApi/interfaces';
 import Token from '@infra/networking/token';
+import ClientHttp from '@infra/networking/clientHttp';
 
 import { getAccessToken } from '@modules/auth/business/stores/useAuth/methods';
-import ClientHttp from '@infra/networking/clientHttp';
 
 export function createFetchClient(): Fetch {
   const client = ClientHttp.create({
-    baseUrl: 'https://api.avansoft.com.br',
+    baseURL: 'http://localhost:3000/',
   });
 
   client.interceptors.request.use(config => {
