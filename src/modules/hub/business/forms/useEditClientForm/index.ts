@@ -20,7 +20,6 @@ export function useEditClientForm() {
     handleSubmit,
     setValue,
     getValues,
-    resetField,
     formState: { errors },
   } = useForm<EditClientForm>({
     resolver: zodResolver(editClientSchema),

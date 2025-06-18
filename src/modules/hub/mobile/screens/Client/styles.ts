@@ -21,4 +21,13 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.COLORS.contrast,
     borderRadius: 8,
   },
+  buttonDelete: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    backgroundColor: '#FF0000',
+    borderRadius: 12,
+    width: 300,
+  },
 });

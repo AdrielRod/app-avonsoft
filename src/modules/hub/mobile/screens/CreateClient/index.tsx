@@ -2,12 +2,7 @@ import { Text, View } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 import { Header, Logo } from '@modules/hub/mobile/components';
-import {
-  Button,
-  If,
-  Input,
-  Spinner,
-} from '@dls/components';
+import { Button, If, Input, Spinner } from '@dls/components';
 import { useCreateClientForm } from '@modules/hub/business/forms';
 import { styles } from '@modules/hub/mobile/screens/CreateClient/styles';
 import { theme } from '@dls/themes/colors';
@@ -54,6 +49,7 @@ function CreateClient() {
       <Button
         touchableProps={{
           onPress: createClientForm.onSubmit,
+          disabled: createClientForm.isLoading,
         }}>
         <If condition={createClientForm.isLoading} elseRender={'create'}>
           <Spinner kind="primary" />

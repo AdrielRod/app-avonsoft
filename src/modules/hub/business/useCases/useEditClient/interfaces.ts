@@ -1,5 +1,3 @@
-export interface EditClientModel extends Omit<ClientModel, 'id'> {}
-
 export interface EditClientRequest {
   name: string;
 }
