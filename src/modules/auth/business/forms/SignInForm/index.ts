@@ -1,9 +1,9 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-// import { showToast } from '@dls/components/Toast/methods';
 import { SignInSchema } from '@modules/auth/business/forms/SignInForm/interfaces';
 import { signInSchema } from '@modules/auth/business/forms/SignInForm/schema';
+import { Toast } from '@dls/components';
 
 export function useSignInForm() {
   const {
@@ -20,6 +20,10 @@ export function useSignInForm() {
     const isThereAnyError = Object.values(errors)[0] ?? null;
 
     if (isThereAnyError) {
+      Toast.show({
+        message: isThereAnyError.message!,
+      });
+
       return;
     }
 

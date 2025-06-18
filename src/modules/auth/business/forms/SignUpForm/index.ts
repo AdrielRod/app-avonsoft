@@ -1,16 +1,14 @@
-import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-// import { showToast } from '@dls/components/Toast/methods';
 import { SignInSchema } from '@modules/auth/business/forms/SignUpForm/interfaces';
 import { signUpSchema } from '@modules/auth/business/forms/SignUpForm/schema';
+import { Toast } from '@dls/components';
 
 export function useSignUpForm() {
   const {
     control,
     handleSubmit,
-    trigger,
     formState: { errors },
   } = useForm<SignInSchema>({
     resolver: zodResolver(signUpSchema),
@@ -21,6 +19,10 @@ export function useSignUpForm() {
     const isThereAnyError = Object.values(errors)[0] ?? null;
 
     if (isThereAnyError) {
+      Toast.show({
+        message: isThereAnyError.message!,
+      });
+
       return;
     }
 
