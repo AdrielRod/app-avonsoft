@@ -7,9 +7,13 @@ import { Header, Highlight } from '@modules/hub/mobile/components';
 import { Touchable } from '@dls/components';
 import { theme } from '@dls/themes/colors';
 import { useFont } from '@shopify/react-native-skia';
+import { useSignOut } from '@modules/auth/business/useCases';
 
 function Home() {
   const font = useFont(require('@dls/assets/fonts/Inter_18pt-Regular.ttf'));
+
+  const signOut = useSignOut();
+
   const data = [
     { x: '01/01', y: 150 },
     { x: '02/01', y: 200 },
@@ -22,7 +26,7 @@ function Home() {
       <Header
         label="home"
         RenderLeftComponent={
-          <Touchable>
+          <Touchable onPress={() => signOut.mutate()}>
             <Ionicons
               name="exit-outline"
               size={24}
