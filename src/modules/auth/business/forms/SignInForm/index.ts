@@ -4,12 +4,15 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { SignInSchema } from '@modules/auth/business/forms/SignInForm/interfaces';
 import { signInSchema } from '@modules/auth/business/forms/SignInForm/schema';
 import { Toast } from '@dls/components';
+import { useSignIn } from '@modules/auth/business/useCases';
+import { SignInParams } from '@modules/auth/business/useCases/useSignIn/interfaces';
 
 export function useSignInForm() {
+  const { mutate, isLoading } = useSignIn();
+
   const {
     control,
     handleSubmit,
-    trigger,
     formState: { errors },
   } = useForm<SignInSchema>({
     resolver: zodResolver(signInSchema),
@@ -32,12 +35,14 @@ export function useSignInForm() {
 
   const onSubmit = handleErrors(
     handleSubmit(data => {
-      const params = {
-        username: data.username,
+      const params: SignInParams = {
+        email: data.username,
         password: data.password,
       };
+
+      mutate(params);
     }),
   );
 
-  return { control, onSubmit };
+  return { control, onSubmit, isLoading };
 }

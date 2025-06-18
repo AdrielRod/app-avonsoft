@@ -1,7 +1,13 @@
 import { Image, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Input, LinearGradientText, Touchable } from '@dls/components';
+import {
+  If,
+  Input,
+  LinearGradientText,
+  Spinner,
+  Touchable,
+} from '@dls/components';
 import { styles } from '@modules/auth/mobile/screens/SignIn/styles';
 import { Logo } from '@modules/auth/mobile/assets';
 import { useSignInForm } from '@modules/auth/business/forms';
@@ -20,7 +26,12 @@ function SignIn() {
 
   function onGoToSignUp() {
     console.log(auth.user);
+
     navigation.navigate('auth/sign-up');
+  }
+
+  function onSubmit() {
+    signInForm.onSubmit();
   }
 
   return (
@@ -46,7 +57,14 @@ function SignIn() {
         />
       </View>
 
-      <Button>sign in</Button>
+      <Button
+        touchableProps={{
+          onPress: onSubmit,
+        }}>
+        <If condition={signInForm.isLoading} elseRender={'sign in'}>
+          <Spinner kind="primary" />
+        </If>
+      </Button>
 
       <Touchable onPress={onGoToSignUp}>
         <Text style={styles.textSignUp}>dont have an account? sign up</Text>
