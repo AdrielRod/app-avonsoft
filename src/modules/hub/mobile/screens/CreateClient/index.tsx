@@ -4,16 +4,13 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { Header, Logo } from '@modules/hub/mobile/components';
 import {
   Button,
-  DatePicker,
   If,
   Input,
   Spinner,
-  Touchable,
 } from '@dls/components';
 import { useCreateClientForm } from '@modules/hub/business/forms';
 import { styles } from '@modules/hub/mobile/screens/CreateClient/styles';
 import { theme } from '@dls/themes/colors';
-import { useRef, useState } from 'react';
 
 function CreateClient() {
   const createClientForm = useCreateClientForm();
@@ -26,7 +23,7 @@ function CreateClient() {
 
   return (
     <View style={styles.container}>
-      <Header label="add customer" RenderLeftComponent={<Logo />} />
+      <Header label="add clients" RenderLeftComponent={<Logo />} />
       <View style={styles.inputField}>
         <Input
           control={createClientForm.control}

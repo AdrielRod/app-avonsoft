@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 20,
-    paddingVertical: 40,
     backgroundColor: theme.COLORS.background,
   },
   chartView: {
@@ -14,5 +13,29 @@ export const styles = StyleSheet.create({
   },
   chartTitle: {
     marginVertical: 10,
+  },
+  clientTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: theme.COLORS.contrast,
+    marginVertical: 24,
+  },
+  inputArea: {
+    flexDirection: 'row',
+    borderWidth: 1,
+    borderColor: theme.COLORS.contrast,
+    borderRadius: 8,
+    width: '100%',
+    height: 48,
+  },
+  input: {
+    paddingHorizontal: 16,
+    width: '85%',
+    color: theme.COLORS.contrast,
+  },
+  buttonFilter: {
+    width: '15%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

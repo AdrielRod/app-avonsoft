@@ -57,9 +57,9 @@ export function useCreateClientForm() {
 
       mutate(params, {
         onSuccess: () => {
-          resetField('name');
-          resetField('dateOfBirth');
-          resetField('email');
+          // resetField('name');
+          // resetField('dateOfBirth');
+          // resetField('email');
         },
       });
     }),

@@ -1,0 +1,1 @@
+export type FilterType = "email" | "name"

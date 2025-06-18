@@ -18,11 +18,8 @@ export async function signUpService(params: SignUpParams) {
   );
 
   const decodedToken = jwtDecode<TokenModel>(response.access_token);
-
-  console.log(decodedToken)
+  
   const result = tokenAdapter(decodedToken);
-
-  console.log(result)
 
   return {
     accessToken: response.access_token,
