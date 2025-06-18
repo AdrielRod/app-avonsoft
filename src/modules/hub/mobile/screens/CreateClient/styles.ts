@@ -8,24 +8,17 @@ export const styles = StyleSheet.create({
     paddingVertical: 40,
     backgroundColor: theme.COLORS.background,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 50,
-  },
-  avantsoft: {
-    alignSelf: 'center',
-    marginBottom: 40,
-  },
   inputField: {
     gap: 16,
     flex: 1,
     marginTop: 40,
   },
-  textSignUp: {
+  dateOfBirthText: {
     color: theme.COLORS.contrast,
     fontSize: 12,
-    alignSelf: 'center',
-    marginTop: 12,
+  },
+  datePicker: {
+    backgroundColor: theme.COLORS.contrast,
+    borderRadius: 8,
   },
 });

@@ -7,11 +7,11 @@ import {
   LinearGradientText,
   Spinner,
   Touchable,
+  Button,
 } from '@dls/components';
 import { styles } from '@modules/auth/mobile/screens/SignIn/styles';
 import { Logo } from '@modules/auth/mobile/assets';
 import { useSignInForm } from '@modules/auth/business/forms';
-import { Button } from '@modules/auth/mobile/components';
 import { useNavigation } from '@shared/hooks';
 import { useAuth } from '@modules/auth/business/stores';
 

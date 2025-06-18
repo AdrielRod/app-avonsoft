@@ -6,7 +6,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import 'src/prototypes';
 
 import Routes from '@routes';
-import { Toast } from '@dls/components';
+import { DatePicker, Toast } from '@dls/components';
 import Query from '@core/query';
 
 export default function App() {
@@ -19,6 +19,7 @@ export default function App() {
             <Routes />
 
             <Toast />
+            <DatePicker />
           </NavigationContainer>
         </GestureHandlerRootView>
       </QueryClientProvider>

@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
-import { AddCustomer, Home } from '@modules/hub/mobile/screens';
+import { CreateClient, Home } from '@modules/hub/mobile/screens';
 import type { StackParamList } from '@routes/interfaces';
 import { theme } from '@dls/themes/colors';
 
@@ -43,8 +43,8 @@ export default function HubHoutes() {
         }}
       />
       <Bottom.Screen
-        name={'hub/add-customer'}
-        component={AddCustomer}
+        name={'hub/create-client'}
+        component={CreateClient}
         options={{
           tabBarIcon: ({ color }) => (
             <Ionicons name="person-add" size={24} color={color} />
