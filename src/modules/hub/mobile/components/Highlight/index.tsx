@@ -1,8 +1,10 @@
-import { HighlightTitleProps } from '@modules/hub/mobile/components/Highlight/interfaces';
+import {
+  HighlightContainerProps,
+  HighlightLabelProps,
+  HighlightTitleProps,
+} from '@modules/hub/mobile/components/Highlight/interfaces';
 import { styles } from '@modules/hub/mobile/components/Highlight/styles';
-import { Text } from 'react-native';
-
-function Label() {}
+import { Text, View } from 'react-native';
 
 function Title({ children, ...rest }: HighlightTitleProps) {
   return (
@@ -12,7 +14,21 @@ function Title({ children, ...rest }: HighlightTitleProps) {
   );
 }
 
-function Container() {}
+function Container({ children, ...rest }: HighlightContainerProps) {
+  return (
+    <View {...rest} style={[styles.container, rest.style]}>
+      {children}
+    </View>
+  );
+}
+
+function Label({ children, ...rest }: HighlightLabelProps) {
+  return (
+    <Text {...rest} style={[styles.label, rest.style]}>
+      {children}
+    </Text>
+  );
+}
 
 const Highlight = {
   Label,

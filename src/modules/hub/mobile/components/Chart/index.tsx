@@ -4,25 +4,21 @@ import { View } from 'react-native';
 
 import { styles } from '@modules/hub/mobile/components/Chart/styles';
 import { theme } from '@dls/themes/colors';
+import { useListSalesPerDay } from '@modules/hub/business/useCases';
 
 function Chart() {
+  const { data } = useListSalesPerDay();
   const font = useFont(require('@dls/assets/fonts/Inter_18pt-Regular.ttf'));
 
   return (
     <View style={styles.chartView}>
       <CartesianChart
-        data={[
-          { x: '01/01', y: 150 },
-          { x: '02/01', y: 200 },
-          { x: '03/01', y: 270 },
-          { x: '04/01', y: 180 },
-        ]}
+        data={data as { x: string; y: number }[]}
         xKey="x"
         axisOptions={{
           font,
           labelColor: theme.COLORS.contrast,
           lineColor: theme.COLORS.contrast,
-          tickCount: 3,
         }}
         frame={{
           lineColor: theme.COLORS.contrast,
@@ -32,7 +28,7 @@ function Chart() {
           <Line
             points={points.y}
             color={theme.COLORS.primary}
-            strokeWidth={3}
+            strokeWidth={1}
             animate={{
               type: 'timing',
             }}

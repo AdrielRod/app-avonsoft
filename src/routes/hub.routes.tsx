@@ -2,20 +2,20 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
-import { Client, CreateClient, Home } from '@modules/hub/mobile/screens';
+import { Client, CreateClient, Home, Search } from '@modules/hub/mobile/screens';
 import type { StackParamList } from '@routes/interfaces';
 import { theme } from '@dls/themes/colors';
 
 const Stack = createNativeStackNavigator<StackParamList>();
 const Bottom = createBottomTabNavigator<StackParamList>();
 
-function HomeStacks() {
+function SearchStacks() {
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name={'hub/home'} component={Home} />
+      <Stack.Screen name={'hub/search'} component={Search} />
       <Stack.Screen name={'hub/client'} component={Client} />
     </Stack.Navigator>
   );
@@ -24,6 +24,7 @@ function HomeStacks() {
 export default function HubHoutes() {
   return (
     <Bottom.Navigator
+      initialRouteName="hub/home"
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
@@ -35,8 +36,17 @@ export default function HubHoutes() {
         tabBarInactiveTintColor: theme.COLORS.tertiary,
       }}>
       <Bottom.Screen
-        name={'hub/tab'}
-        component={HomeStacks}
+        name={'hub/search-tab'}
+        component={SearchStacks}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="search" size={24} color={color} />
+          ),
+        }}
+      />
+      <Bottom.Screen
+        name={'hub/home'}
+        component={Home}
         options={{
           tabBarIcon: ({ color }) => (
             <Ionicons name="home" size={24} color={color} />

@@ -1,38 +1,20 @@
-import { Fragment, useState } from 'react';
-import { Text, TextInput, View } from 'react-native';
+import { View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import { styles } from '@modules/hub/mobile/screens/Home/styles';
-import {
-  Chart,
-  ClientList,
-  FilterOptions,
-  Header,
-  Highlight,
-} from '@modules/hub/mobile/components';
+import { Chart, Header, Highlight } from '@modules/hub/mobile/components';
 import { Touchable } from '@dls/components';
 import { theme } from '@dls/themes/colors';
 import { useSignOut } from '@modules/auth/business/useCases';
-import type { FilterType } from '@modules/hub/mobile/screens/Home/interfaces';
-import { usePopupMenu } from '@shared/hooks';
+import { useListTopSales } from '@modules/hub/business/useCases';
 
 function Home() {
   const signOut = useSignOut();
 
-  const { anchorRef, layout, popupMenuRef, onLayoutAnchor, onClickOnAnchor } =
-    usePopupMenu();
+  const topSales = useListTopSales();
 
-  const [filter, setFilter] = useState<FilterType>('name');
-
-  const [search, setSearch] = useState('');
-
-  function openFilterOptions() {
-    onClickOnAnchor();
-    popupMenuRef.current?.open();
-  }
-
-  const renderHeader = (
-    <Fragment>
+  return (
+    <View style={styles.container}>
       <Header
         label="home"
         RenderLeftComponent={
@@ -46,50 +28,19 @@ function Home() {
         }
       />
 
-      <Highlight.Title style={styles.chartTitle}>today's sales</Highlight.Title>
-
+      <Highlight.Title style={styles.chartTitle}>sales per day</Highlight.Title>
       <Chart />
 
-      <Text style={styles.clientTitle}>clients</Text>
-
-      <View style={styles.inputArea}>
-        <TextInput
-          style={styles.input}
-          placeholder="search clients"
-          placeholderTextColor={theme.COLORS.tertiary}
-          value={search}
-          onChangeText={setSearch}
-        />
-
-        <Touchable.WithRef
-          onLayout={onLayoutAnchor}
-          onPress={openFilterOptions}
-          ref={anchorRef}
-          style={styles.buttonFilter}>
-          <Ionicons
-            name="filter-outline"
-            size={24}
-            color={theme.COLORS.contrast}
-          />
-        </Touchable.WithRef>
-
-        <FilterOptions
-          {...{
-            layout,
-            filter,
-            setFilter,
-            popupMenuRef,
-          }}
-        />
+      <View style={styles.highlightsContainer}>
+        {topSales.data?.map(sale => (
+          <Highlight.Container key={sale.id}>
+            <Highlight.Label>{sale.label}</Highlight.Label>
+            <Highlight.Title style={styles.highlightTitle}>
+              {sale.name}
+            </Highlight.Title>
+          </Highlight.Container>
+        ))}
       </View>
-    </Fragment>
-  );
-
-  return (
-    <View style={styles.container}>
-      <ClientList
-        {...{ searchTerm: search, filter, ListHeaderComponent: renderHeader }}
-      />
     </View>
   );
 }

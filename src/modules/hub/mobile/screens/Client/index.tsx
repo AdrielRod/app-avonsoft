@@ -88,7 +88,7 @@ function Client() {
       <Button
         touchableProps={{
           onPress: editClientForm.onSubmit,
-          disabled: editClientForm.isLoading || !deleteClient.isLoading,
+          disabled: editClientForm.isLoading || deleteClient.isLoading,
         }}>
         <If condition={editClientForm.isLoading} elseRender={'edit'}>
           <Spinner kind="primary" />

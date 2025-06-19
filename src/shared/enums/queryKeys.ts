@@ -1,3 +1,5 @@
 export enum QueryKeys {
     CLIENT_LIST = 'CLIENT_LIST',
+    LIST_SALES_PER_DAY = 'LIST_SALES_PER_DAY',
+    LIST_TOP_SALES = 'LIST_TOP_SALES',
 }

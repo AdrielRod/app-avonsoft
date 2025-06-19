@@ -7,6 +7,8 @@ import { Toast } from '@dls/components';
 import { useNavigation } from '@shared/hooks';
 import { useEditClient } from '@modules/hub/business/useCases';
 import type { EditClientParams } from '@modules/hub/business/useCases/useEditClient/interfaces';
+import Query from '@core/query';
+import { QueryKeys } from '@shared/enums/queryKeys';
 
 export function useEditClientForm() {
   const { mutate, isLoading } = useEditClient();
@@ -51,7 +53,11 @@ export function useEditClientForm() {
         id: client.id,
       };
 
-      mutate(params);
+      mutate(params, {
+        onSuccess: () => {
+          Query.invalidate([QueryKeys.CLIENT_LIST]);
+        },
+      });
     }),
   );
 
